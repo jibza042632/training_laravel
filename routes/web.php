@@ -49,5 +49,6 @@ Route::get('demoseven/{id}', function ($id) {
 
 
 Route::resource('photos', 'PhotoController');
+
 Route::resource('admin/user', 'Admin\UsersController');
 
