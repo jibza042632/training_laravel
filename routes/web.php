@@ -45,10 +45,21 @@ Route::get('demosix/{id}/{name}', function ($id, $name) {
 Route::get('demoseven/{id}', function ($id) {
     return 'demoseven ID: '.$id;
 })->where('id', '[0-9]+');
+Route::get('/testlinenoti', 'DemoController@testlinenoti');
+Route::get('/testexcel', 'DemoController@testexcel');
+
 
 
 
 Route::resource('photos', 'PhotoController');
 
-Route::resource('admin/user', 'Admin\UsersController');
+//Route::resource('admin/user', 'Admin\UsersController');
 
+Route::prefix('admin')->middleware('auth')->group(function () {
+	Route::resource('user', 'Admin\UsersController');
+});
+
+
+Route::get('login', 'LoginController@index')->name('login');
+Route::get('logout', 'LoginController@logout');
+Route::post('login', 'LoginController@authenticate');

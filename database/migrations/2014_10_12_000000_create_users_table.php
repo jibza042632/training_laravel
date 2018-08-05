@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('city')->nullable();
             $table->string('mobile')->nullable();
             $table->integer('active')->default(1);
+            $table->string('api_token', 60)->unique()->nullable();
             $table->rememberToken();
             $table->timestamps();
 
